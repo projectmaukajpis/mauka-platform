@@ -115,7 +115,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
+      
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-orange-600 to-orange-500 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -127,16 +127,26 @@ export default function HomePage() {
             Join the Mauka community today and discover volunteer opportunities 
             that align with your passion and skills. Your journey to impact starts here.
           </p>
-          <Link to="/auth/signup">
-            <Button variant="outline" size="lg" className="bg-white text-orange-600 border-white hover:bg-gray-100">
-              Join as Volunteer
-            </Button>
-          </Link>
-          <Link to="https://forms.gle/xyyVhHwoJqJYcCUx6">
-            <Button variant="outline" size="lg" className="bg-white text-orange-600 border-white hover:bg-gray-100">
-              Join as NGO
-            </Button>
-          </Link>
+          <div className="flex justify-center gap-4">
+            <Link to="/auth/signup">
+              <Button
+                variant="outline"
+                size="lg"
+                className="bg-white text-orange-600 border-white hover:bg-gray-100"
+              >
+                Join as Volunteer
+              </Button>
+            </Link>
+            <Link to="https://forms.gle/xyyVhHwoJqJYcCUx6">
+              <Button
+                variant="outline"
+                size="lg"
+                className="bg-white text-orange-600 border-white hover:bg-gray-100"
+              >
+                Join as NGO
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
     </div>
