@@ -26,25 +26,16 @@ export default function Navbar() {
     setIsOpen(false);
   };
 
-  // Get user's display name
   const getUserDisplayName = () => {
     if (!user) return '';
-    
-    // Try to get name from user metadata first
-    if (user.user_metadata?.name) {
-      return user.user_metadata.name;
-    }
-    
-    // Fallback to extracting name from email
+    if (user.user_metadata?.name) return user.user_metadata.name;
     if (user.email) {
       const emailName = user.email.split('@')[0];
-      // Convert email name to proper case (e.g., john.doe -> John Doe)
       return emailName
         .split(/[._-]/)
         .map(part => part.charAt(0).toUpperCase() + part.slice(1))
         .join(' ');
     }
-    
     return 'User';
   };
 
@@ -52,7 +43,6 @@ export default function Navbar() {
     <nav className="fixed top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-orange-100 shadow-sm">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
           <div className="flex items-center flex-shrink-0">
             <Link to="/" className="flex items-center space-x-2">
               <span className="text-2xl font-bold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent">
@@ -61,7 +51,6 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-1">
             {navigation.map((item) => (
               <Link
@@ -78,9 +67,7 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Search and User Menu */}
           <div className="flex items-center space-x-3">
-            {/* Search bar for desktop */}
             <div className="hidden md:block">
               <SearchBar 
                 className="w-64" 
@@ -89,7 +76,6 @@ export default function Navbar() {
               />
             </div>
             
-            {/* Search button for mobile */}
             <button
               onClick={() => navigate('/search')}
               className="md:hidden p-2 text-gray-700 hover:text-orange-600 hover:bg-orange-50 rounded-md transition-colors"
@@ -100,12 +86,10 @@ export default function Navbar() {
 
             {user ? (
               <div className="flex items-center space-x-3">
-                {/* Notifications */}
                 <button className="p-2 text-gray-700 hover:text-orange-600 hover:bg-orange-50 rounded-md transition-colors">
                   <Bell size={20} />
                 </button>
                 
-                {/* User info - desktop */}
                 <div className="hidden md:flex items-center space-x-3">
                   <div className="flex items-center space-x-2 px-3 py-2 bg-orange-50 rounded-md">
                     <div className="w-8 h-8 bg-orange-600 rounded-full flex items-center justify-center">
@@ -138,9 +122,9 @@ export default function Navbar() {
                 >
                   Join as Volunteer
                 </Link>
+              </div>
             )}
 
-            {/* Mobile menu button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="md:hidden p-2 text-gray-700 hover:text-orange-600 hover:bg-orange-50 rounded-md transition-colors"
@@ -151,11 +135,9 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Navigation */}
       {isOpen && (
         <div className="md:hidden bg-white/98 backdrop-blur-md border-t border-orange-100 shadow-lg">
           <div className="px-4 pt-2 pb-3 space-y-1">
-            {/* Mobile search */}
             <div className="py-2">
               <SearchBar 
                 placeholder="Search..." 
@@ -164,7 +146,6 @@ export default function Navbar() {
               />
             </div>
             
-            {/* Navigation links */}
             {navigation.map((item) => (
               <Link
                 key={item.name}
@@ -180,7 +161,6 @@ export default function Navbar() {
               </Link>
             ))}
             
-            {/* User section */}
             <div className="border-t border-gray-200 pt-4 mt-4">
               {user ? (
                 <div className="space-y-2">
