@@ -46,7 +46,6 @@ function App() {
               <Route path="/auth/login" element={<LoginPage />} />
               <Route path="/auth/signup" element={<SignupPage />} />
               <Route path="/auth/profile-setup" element={<ProfileSetupPage />} />
-              <Route path="/ngo/register" element={<NGORegistrationPage />} />
               
               {/* Catch all - redirect to home */}
             <Route path="*" element={<Navigate to="/" replace />} />

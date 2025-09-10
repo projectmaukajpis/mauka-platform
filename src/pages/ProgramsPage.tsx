@@ -208,11 +208,16 @@ export default function ProgramsPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium">
-              Explore AI Matching
+              Find Opportunities
             </button>
-            <button className="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium">
-              Contact Us
-            </button>
+            <a 
+              href="https://forms.google.com/your-ngo-form-id" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium text-center"
+            >
+              Apply as NGO
+            </a>
           </div>
         </div>
       </section>

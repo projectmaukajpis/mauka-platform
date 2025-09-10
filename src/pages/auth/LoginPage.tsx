@@ -131,10 +131,21 @@ export default function LoginPage() {
 
           <div className="mt-8 text-center">
             <p className="text-gray-600">
-              Don't have an account?{' '}
+              Want to volunteer?{' '}
               <Link to="/auth/signup" className="text-orange-600 hover:text-orange-700 font-medium">
-                Sign up
+                Join as volunteer
               </Link>
+            </p>
+            <p className="text-gray-600 mt-2">
+              NGO looking to find volunteers?{' '}
+              <a 
+                href="https://forms.google.com/your-ngo-form-id" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-orange-600 hover:text-orange-700 font-medium"
+              >
+                Apply here
+              </a>
             </p>
           </div>
         </div>

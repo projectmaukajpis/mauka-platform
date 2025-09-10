@@ -166,16 +166,21 @@ export default function ContactPage() {
 
               <div className="mt-12 p-6 bg-gradient-to-r from-blue-50 to-green-50 rounded-xl">
                 <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                  For NGO Partnerships
+                  For NGO Applications
                 </h3>
                 <p className="text-gray-600 mb-4">
-                  Interested in partnering with us? We're always looking to work with 
-                  impactful NGOs across India. Let's discuss how we can help you find 
-                  passionate volunteers.
+                  Interested in joining our platform? We're always looking to work with 
+                  impactful NGOs across India. Apply through our form and we'll review 
+                  your application.
                 </p>
-                <button className="text-blue-600 hover:text-blue-700 font-medium">
-                  Learn about NGO partnerships →
-                </button>
+                <a 
+                  href="https://forms.google.com/your-ngo-form-id" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:text-blue-700 font-medium"
+                >
+                  Apply to join as NGO →
+                </a>
               </div>
             </div>
 

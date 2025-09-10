@@ -24,7 +24,7 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/auth/signup">
                 <Button size="lg" icon={ArrowRight} className="w-full sm:w-auto bg-orange-600 hover:bg-orange-700">
-                  Join Us Today
+                  Join as Volunteer
                 </Button>
               </Link>
               <Link to="/about">
@@ -124,7 +124,7 @@ export default function HomePage() {
           </p>
           <Link to="/auth/signup">
             <Button variant="outline" size="lg" className="bg-white text-orange-600 border-white hover:bg-gray-100">
-              Get Started Now
+              Join as Volunteer
             </Button>
           </Link>
         </div>

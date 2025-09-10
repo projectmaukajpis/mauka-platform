@@ -111,11 +111,12 @@ export default function AboutPage() {
                 </div>
                 <div className="flex items-center space-x-2">
                   <Users className="text-green-600" size={20} />
-                  <span className="text-gray-700">Community-First</span>
+                  How can NGOs join the platform?
                 </div>
                 <div className="flex items-center space-x-2">
-                  <Heart className="text-red-600" size={20} />
-                  <span className="text-gray-700">Purpose-Led</span>
+                  NGOs can apply to join our platform through our application form. 
+                  We carefully review all applications to ensure authenticity and impact 
+                  before providing access credentials.
                 </div>
               </div>
             </div>
