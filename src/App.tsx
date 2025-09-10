@@ -12,7 +12,6 @@ import ProgramsPage from './pages/ProgramsPage';
 import ImpactPage from './pages/ImpactPage';
 import ContactPage from './pages/ContactPage';
 import DonatePage from './pages/DonatePage';
-import SearchPage from './pages/SearchPage';
 import MatchPage from './pages/MatchPage';
 
 // Auth Pages
@@ -39,7 +38,6 @@ function App() {
               {/* <Route path="/ai-match-demo" element={<AIMatchPage />} /> */}
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/donate" element={<DonatePage />} />
-              <Route path="/search" element={<SearchPage />} />
               <Route path="/match" element={<MatchPage />} />
               
               {/* Auth Routes */}

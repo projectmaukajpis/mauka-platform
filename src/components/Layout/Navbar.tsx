@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X, User, LogOut, Search, Bell } from 'lucide-react';
+import { Menu, X, User, LogOut, Bell } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
-import SearchBar from '../SearchBar';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -68,22 +67,6 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center space-x-3">
-            <div className="hidden md:block">
-              <SearchBar 
-                className="w-64" 
-                placeholder="Search..." 
-                showShortcut={false}
-              />
-            </div>
-            
-            <button
-              onClick={() => navigate('/search')}
-              className="md:hidden p-2 text-gray-700 hover:text-orange-600 hover:bg-orange-50 rounded-md transition-colors"
-              aria-label="Search"
-            >
-              <Search size={20} />
-            </button>
-
             {user ? (
               <div className="flex items-center space-x-3">
                 <button className="p-2 text-gray-700 hover:text-orange-600 hover:bg-orange-50 rounded-md transition-colors">
@@ -138,14 +121,6 @@ export default function Navbar() {
       {isOpen && (
         <div className="md:hidden bg-white/98 backdrop-blur-md border-t border-orange-100 shadow-lg">
           <div className="px-4 pt-2 pb-3 space-y-1">
-            <div className="py-2">
-              <SearchBar 
-                placeholder="Search..." 
-                showShortcut={false}
-                className="w-full"
-              />
-            </div>
-            
             {navigation.map((item) => (
               <Link
                 key={item.name}
