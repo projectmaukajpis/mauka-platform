@@ -27,6 +27,11 @@ export default function HomePage() {
                   Join as Volunteer
                 </Button>
               </Link>
+              <Link to="https://forms.gle/wgP9RX5DYF5L54uz9">
+                <Button size="lg" icon={ArrowRight} className="w-full sm:w-auto bg-orange-600 hover:bg-orange-700">
+                  Join as NGO
+                </Button>
+              </Link>
               <Link to="/about">
                 <Button variant="outline" size="lg" className="w-full sm:w-auto">
                   Learn More
@@ -125,6 +130,11 @@ export default function HomePage() {
           <Link to="/auth/signup">
             <Button variant="outline" size="lg" className="bg-white text-orange-600 border-white hover:bg-gray-100">
               Join as Volunteer
+            </Button>
+          </Link>
+          <Link to="https://forms.gle/xyyVhHwoJqJYcCUx6">
+            <Button variant="outline" size="lg" className="bg-white text-orange-600 border-white hover:bg-gray-100">
+              Join as NGO
             </Button>
           </Link>
         </div>
