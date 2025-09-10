@@ -1,0 +1,41 @@
+{
+  "name": "mauka-backend",
+  "version": "1.0.0",
+  "description": "Backend for Mauka - AI-powered volunteer matching platform",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node src/server.js",
+    "start": "node src/server.js",
+    "build": "echo 'Build complete'",
+    "test": "echo 'No tests specified'"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.3",
+    "cohere-ai": "^7.7.7",
+    "compromise": "^14.10.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.1.5",
+    "helmet": "^7.1.0",
+    "mongodb": "^6.19.0",
+    "natural": "^6.10.4",
+    "node-cron": "^3.0.3",
+    "nodemailer": "^6.9.8",
+    "openai": "^4.20.1",
+    "validator": "^13.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "keywords": [
+    "volunteer",
+    "ngo",
+    "matching",
+    "ai",
+    "social-impact"
+  ],
+  "author": "Mauka Team",
+  "license": "MIT"
+}
