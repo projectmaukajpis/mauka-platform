@@ -27,6 +27,11 @@ export default function HomePage() {
                   Join as Volunteer
                 </Button>
               </Link>
+              <Link to="https://forms.gle/FPrgRb171kFwd9v88">
+                <Button size="lg" icon={ArrowRight} className="w-full sm:w-auto bg-orange-600 hover:bg-orange-700">
+                  Join as NGO
+                </Button>
+              </Link>
               <Link to="/about">
                 <Button variant="outline" size="lg" className="w-full sm:w-auto">
                   Learn More
