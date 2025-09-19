@@ -1,36 +1,7 @@
 import React from 'react';
 import { ExternalLink, Facebook, Twitter, Instagram, Linkedin, MapPin, Users, Clock, Heart } from 'lucide-react';
 
-const socialLinks = [
-  {
-    platform: 'Facebook',
-    icon: Facebook,
-    url: 'https://facebook.com/volunteermauka',
-    followers: '5.2K',
-    color: 'text-blue-600'
-  },
-  {
-    platform: 'Twitter',
-    icon: Twitter,
-    url: 'https://twitter.com/volunteermauka',
-    followers: '3.8K',
-    color: 'text-blue-400'
-  },
-  {
-    platform: 'Instagram',
-    icon: Instagram,
-    url: 'https://instagram.com/volunteermauka',
-    followers: '8.9K',
-    color: 'text-pink-600'
-  },
-  {
-    platform: 'LinkedIn',
-    icon: Linkedin,
-    url: 'https://linkedin.com/company/volunteermauka',
-    followers: '2.1K',
-    color: 'text-blue-700'
-  }
-];
+
 
 const impactMetrics = [
   {
