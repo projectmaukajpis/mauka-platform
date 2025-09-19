@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { DollarSign, TrendingUp, Globe, Smartphone, CheckCircle } from 'lucide-react';
+import { DollarSign, TrendingUp, Globe, Smartphone, CheckCircle, Users } from 'lucide-react';
 
 const timelineEvents = [
   {
