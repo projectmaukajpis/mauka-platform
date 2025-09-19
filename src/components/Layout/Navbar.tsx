@@ -13,9 +13,10 @@ export default function Navbar() {
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
     { name: 'Impact', href: '/impact' },
+    { name: 'Accomplishments', href: '/accomplishments' },
+    { name: 'Timeline', href: '/timeline' },
     ...(user ? [{ name: 'Dashboard', href: '/dashboard' }] : []),
     { name: 'Contact', href: '/contact' },
-    { name: 'Donate', href: '/donate' },
     { name: 'AI-Matching', href: '/match' },    
   ];
 
@@ -44,6 +45,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center flex-shrink-0">
             <Link to="/" className="flex items-center space-x-2">
+              <img src="/logo.jpg" alt="Mauka Logo" className="h-8 w-8 object-contain" />
               <span className="text-2xl font-bold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent">
                 Mauka
               </span>

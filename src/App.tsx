@@ -10,8 +10,9 @@ import DashboardPage from './pages/DashboardPage';
 import AboutPage from './pages/AboutPage';
 import ProgramsPage from './pages/ProgramsPage';
 import ImpactPage from './pages/ImpactPage';
+import AccomplishmentsPage from './pages/AccomplishmentsPage';
+import TimelinePage from './pages/TimelinePage';
 import ContactPage from './pages/ContactPage';
-import DonatePage from './pages/DonatePage';
 import MatchPage from './pages/MatchPage';
 
 // Auth Pages
@@ -33,11 +34,12 @@ function App() {
               <Route path="/about" element={<AboutPage />} />
               <Route path="/programs" element={<ProgramsPage />} />
               <Route path="/impact" element={<ImpactPage />} />
+              <Route path="/accomplishments" element={<AccomplishmentsPage />} />
+              <Route path="/timeline" element={<TimelinePage />} />
               <Route path="/dashboard" element={<DashboardPage />} />
               {/* <Route path="/ai-match" element={<AIMatchNewPage />} /> */}
               {/* <Route path="/ai-match-demo" element={<AIMatchPage />} /> */}
               <Route path="/contact" element={<ContactPage />} />
-              <Route path="/donate" element={<DonatePage />} />
               <Route path="/match" element={<MatchPage />} />
               
               {/* Auth Routes */}

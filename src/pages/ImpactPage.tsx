@@ -35,55 +35,52 @@ const socialLinks = [
 const impactMetrics = [
   {
     icon: Users,
-    title: 'Lives Impacted',
-    value: '25,000+',
-    description: 'People directly benefited from our volunteer programs',
+    title: 'Volunteers',
+    value: '3000',
+    description: 'Active volunteers making a difference',
     color: 'bg-blue-100 text-blue-600'
   },
   {
     icon: MapPin,
-    title: 'Cities Reached',
-    value: '50+',
-    description: 'Cities across India where our volunteers are active',
+    title: 'NGO Partners',
+    value: '80+',
+    description: 'Verified NGOs collaborating with our platform',
     color: 'bg-green-100 text-green-600'
   },
   {
     icon: Clock,
-    title: 'Hours Contributed',
-    value: '100,000+',
+    title: 'Service Hours',
+    value: '7200',
     description: 'Total volunteer hours contributed to various causes',
     color: 'bg-orange-100 text-orange-600'
   },
   {
     icon: Heart,
-    title: 'NGO Partners',
-    value: '500+',
-    description: 'Verified NGOs collaborating with our platform',
+    title: 'Lives Impacted',
+    value: '15,000+',
+    description: 'People directly benefited from our volunteer programs',
     color: 'bg-red-100 text-red-600'
   }
 ];
 
-const recentUpdates = [
+const programs = [
   {
     id: 1,
-    title: 'Education Drive Success',
-    description: 'Our volunteers helped 500+ children access quality education materials this month.',
-    date: 'January 15, 2025',
-    image: 'https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=400'
+    title: 'Educational Sessions',
+    description: 'Comprehensive learning programs designed to enhance academic skills and knowledge across various subjects.',
+    image: '/education.jpeg'
   },
   {
     id: 2,
-    title: 'Clean Water Initiative',
-    description: 'Successfully installed water purification systems in 10 rural villages.',
-    date: 'January 10, 2025',
-    image: 'https://images.pexels.com/photos/6591379/pexels-photo-6591379.jpeg?auto=compress&cs=tinysrgb&w=400'
+    title: 'Musical Sessions',
+    description: 'Creative music programs that foster artistic expression and cultural appreciation among participants.',
+    image: '/music.jpeg'
   },
   {
     id: 3,
-    title: 'Digital Literacy Program',
-    description: 'Trained 200+ seniors in basic computer and internet skills.',
-    date: 'January 5, 2025',
-    image: 'https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=400'
+    title: 'Enrichment Sessions',
+    description: 'Holistic development programs focusing on life skills, personality development, and community engagement.',
+    image: '/enrich.jpeg'
   }
 ];
 
@@ -136,35 +133,27 @@ export default function ImpactPage() {
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Recent Impact Stories</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Programs</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Stay updated with our latest achievements and the positive changes 
-              our volunteer community is creating across the country.
+              Discover the core programs that drive our mission to create positive 
+              change in communities across India.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {recentUpdates.map((update) => (
-              <div key={update.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+            {programs.map((program) => (
+              <div key={program.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
                 <img
-                  src={update.image}
-                  alt={update.title}
+                  src={program.image}
+                  alt={program.title}
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
-                  <div className="text-sm text-gray-500 mb-2">{update.date}</div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">{update.title}</h3>
-                  <p className="text-gray-600">{update.description}</p>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">{program.title}</h3>
+                  <p className="text-gray-600">{program.description}</p>
                 </div>
               </div>
             ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <p className="text-gray-600 mb-4">More impact stories coming soon!</p>
-            <button className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium">
-              Subscribe for Updates
-            </button>
           </div>
         </div>
       </section>

@@ -42,6 +42,8 @@ export default function Footer() {
               <li><Link to="/ai-match" className="text-gray-300 hover:text-white transition-colors">AI Matching</Link></li>
               {/*<li><Link to="/leaderboard" className="text-gray-300 hover:text-white transition-colors">Leaderboard</Link></li>*/}
               <li><Link to="/impact" className="text-gray-300 hover:text-white transition-colors">Our Impact</Link></li>
+              <li><Link to="/accomplishments" className="text-gray-300 hover:text-white transition-colors">Accomplishments</Link></li>
+              <li><Link to="/timeline" className="text-gray-300 hover:text-white transition-colors">Timeline</Link></li>
             </ul>
           </div>
 
