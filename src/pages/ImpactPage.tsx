@@ -129,43 +129,7 @@ export default function ImpactPage() {
         </div>
       </section>
 
-      {/* Social Media Links */}
-      <section className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Connect With Us</h2>
-            <p className="text-lg text-gray-600">
-              Follow us on social media to stay updated with our latest activities, 
-              impact stories, and volunteer opportunities.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {socialLinks.map((social) => (
-              <a
-                key={social.platform}
-                href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group block p-6 bg-white border border-gray-200 rounded-xl hover:shadow-lg transition-all duration-200"
-              >
-                <div className="text-center">
-                  <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-gray-100 ${social.color} mb-4 group-hover:scale-110 transition-transform`}>
-                    <social.icon size={32} />
-                  </div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                    {social.platform}
-                  </h3>
-                  <p className="text-sm text-gray-600 mb-3">{social.followers} followers</p>
-                  <div className="inline-flex items-center text-sm text-blue-600 group-hover:text-blue-700">
-                    Follow us <ExternalLink size={14} className="ml-1" />
-                  </div>
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
+  
 
       {/* Future Metrics Section (Placeholder) */}
       <section className="py-20 bg-gradient-to-r from-blue-600 to-green-600 text-white">
