@@ -22,7 +22,7 @@ const teamMembers = [
     id: '12',
     name: 'Piyush Dhumal',
     position: 'President',
-    image_url: 'https://i.postimg.cc/zy9jJfrm/arsh.jpg',
+    image_url: 'https://i.postimg',
     contact: 'pdhumal@jpis.com'
   },
   {
