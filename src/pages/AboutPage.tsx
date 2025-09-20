@@ -19,6 +19,13 @@ const teamMembers = [
     contact: 'arshchoudhary009@gmail.com'
   },
   {
+    id: '12',
+    name: 'Piyush Dhumal',
+    position: 'President',
+    image_url: 'https://i.postimg.cc/zy9jJfrm/arsh.jpg',
+    contact: 'pdhumal@jpis.com'
+  },
+  {
     id: '3',
     name: 'Siddharth Sharma',
     position: 'Head of Operations',
