@@ -129,7 +129,7 @@ export default function AboutPage() {
             </div>
             <div className="lg:text-center">
               <img 
-                src="/home/project/public/WhatsApp Image 2025-09-20 at 6.46.53 AM.jpeg" 
+                src="WhatsApp Image 2025-09-20 at 6.46.53 AM.jpeg" 
                 alt="Team collaboration" 
                 className="rounded-lg shadow-lg"
               />
