@@ -105,7 +105,7 @@ export default function HomePage() {
               <div className="text-gray-600">Partner NGOs</div>
             </div>
             <div>
-              <div className="text-3xl md:text-4xl font-bold text-orange-600 mb-2">10,000+</div>
+              <div className="text-3xl md:text-4xl font-bold text-orange-600 mb-2">7200+</div>
               <div className="text-gray-600">Hours Volunteered</div>
             </div>
             <div>
