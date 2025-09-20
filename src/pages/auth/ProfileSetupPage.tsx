@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { supabase } from '../../config/supabase';
 import { MapPin, Target, Clock, User, Camera } from 'lucide-react';
@@ -31,8 +31,22 @@ export default function ProfileSetupPage() {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<{[key: string]: string}>({});
 
-  const { user } = useAuth();
+  const { user, loading: authLoading } = useAuth();
   const navigate = useNavigate();
+
+  // Show loading spinner while auth is loading
+  if (authLoading) {
+    return (
+      <div className="pt-16 min-h-screen bg-gradient-to-br from-orange-50 via-white to-orange-100 flex items-center justify-center">
+        <LoadingSpinner size="lg" />
+      </div>
+    );
+  }
+
+  // Redirect to login if user is not authenticated
+  if (!user) {
+    return <Navigate to="/auth/login" replace />;
+  }
 
   const handleSkillToggle = (skill: string) => {
     setFormData(prev => ({
