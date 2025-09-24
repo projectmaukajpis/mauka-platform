@@ -39,10 +39,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       email,
       password,
       options: {
-        emailRedirectTo: undefined, // Disable email confirmation
+        emailRedirectTo: `${window.location.origin}/auth/login`,
         data: userData
       }
     });
+    
+    // If email confirmation is disabled in Supabase settings, 
+    // the user should be able to sign in immediately
+    if (data.user && !data.user.email_confirmed_at && !error) {
+      // Try to sign in immediately after signup
+      const signInResult = await signIn(email, password);
+      return signInResult;
+    }
+    
     return { data, error };
   };
 
