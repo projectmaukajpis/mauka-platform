@@ -70,16 +70,62 @@ export const matchAPI = {
    */
   async findNearbyNGOs(lat: number, lng: number, radiusKm: number = 25): Promise<NearbyNGO[]> {
     try {
-      const response = await apiClient.get<{ success: boolean; results: NearbyNGO[] }>(
-        `/match/nearby-ngos?lat=${lat}&lng=${lng}&radiusKm=${radiusKm}`
-      );
-      return response.data.results || [];
+      // Fallback to Supabase direct query if backend is not available
+      const { data, error } = await supabase
+        .from('ngo_postings')
+        .select(`
+          id,
+          title,
+          description,
+          location,
+          coordinates,
+          skills_required,
+          time_commitment,
+          user_profiles!inner(name, verified)
+        `)
+        .eq('status', 'active');
+
+      if (error) throw error;
+
+      // Calculate distances and format data
+      const nearbyNGOs = data?.map(posting => ({
+        id: posting.id,
+        title: posting.title,
+        organization_name: posting.user_profiles.name,
+        location: posting.location,
+        coordinates: posting.coordinates ? 
+          { lat: posting.coordinates.coordinates[1], lng: posting.coordinates.coordinates[0] } : 
+          { lat: 0, lng: 0 },
+        distanceKm: posting.coordinates ? 
+          this.calculateDistance(lat, lng, posting.coordinates.coordinates[1], posting.coordinates.coordinates[0]) : 
+          999,
+        description: posting.description,
+        skills_required: posting.skills_required || [],
+        time_commitment: posting.time_commitment || '',
+        verified: posting.user_profiles.verified || false,
+        focus_areas: posting.skills_required || []
+      })).filter(ngo => ngo.distanceKm <= radiusKm) || [];
+
+      return nearbyNGOs;
     } catch (error) {
       console.error('Error finding nearby NGOs:', error);
       return [];
     }
   },
 
+  /**
+   * Calculate distance between two points using Haversine formula
+   */
+  calculateDistance(lat1: number, lng1: number, lat2: number, lng2: number): number {
+    const R = 6371; // Earth's radius in kilometers
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLng = (lng2 - lng1) * Math.PI / 180;
+    const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+              Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+              Math.sin(dLng/2) * Math.sin(dLng/2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    return R * c;
+  },
   /**
    * Find nearby volunteers for a specific posting
    */

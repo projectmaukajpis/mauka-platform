@@ -47,8 +47,7 @@ export default function ApplicationsList({ ngoUserId, status }: ApplicationsList
         .from('applications')
         .select(`
           *,
-          user_profiles!applications_volunteer_user_id_fkey(name, email, skills, location, bio),
-          ngo_postings!inner(title, location, ngo_user_id, user_profiles!ngo_postings_ngo_user_id_fkey(name))
+          ngo_postings!inner(title, location, ngo_user_id)
         `)
         .eq('ngo_postings.ngo_user_id', user.id);
 
@@ -60,17 +59,26 @@ export default function ApplicationsList({ ngoUserId, status }: ApplicationsList
 
       if (error) throw error;
 
+      // Get volunteer and organization data separately
+      const volunteerIds = data?.map(app => app.volunteer_user_id) || [];
+      const { data: volunteerData } = await supabase
+        .from('user_profiles')
+        .select('user_id, name, email, skills, location, bio')
+        .in('user_id', volunteerIds);
+
+      const volunteerMap = new Map(volunteerData?.map(vol => [vol.user_id, vol]) || []);
+
       const formattedApplications = data?.map(app => ({
         id: app.id,
         cover_letter: app.cover_letter,
         status: app.status,
         applied_at: app.applied_at,
         volunteer: {
-          name: app.user_profiles.name,
-          email: app.user_profiles.email,
-          skills: app.user_profiles.skills || [],
-          location: app.user_profiles.location || 'Location not specified',
-          bio: app.user_profiles.bio || 'No bio provided'
+          name: volunteerMap.get(app.volunteer_user_id)?.name || 'Unknown Volunteer',
+          email: volunteerMap.get(app.volunteer_user_id)?.email || 'No email',
+          skills: volunteerMap.get(app.volunteer_user_id)?.skills || [],
+          location: volunteerMap.get(app.volunteer_user_id)?.location || 'Location not specified',
+          bio: volunteerMap.get(app.volunteer_user_id)?.bio || 'No bio provided'
         },
         posting: {
           title: app.ngo_postings.title,

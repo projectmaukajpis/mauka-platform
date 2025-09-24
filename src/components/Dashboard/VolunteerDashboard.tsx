@@ -99,6 +99,9 @@ export default function VolunteerDashboard({ profile }: VolunteerDashboardProps)
   const fetchApplications = async () => {
     setLoading(true);
     try {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) throw new Error('User not authenticated');
+
       let query = supabase
         .from('applications')
         .select(`
@@ -108,10 +111,10 @@ export default function VolunteerDashboard({ profile }: VolunteerDashboardProps)
           ngo_postings!inner(
             title,
             location,
-            user_profiles!inner(name)
+            ngo_user_id
           )
         `)
-        .eq('volunteer_user_id', profile.id);
+        .eq('volunteer_user_id', user.id);
 
       if (activeTab === 'applications') {
         query = query.eq('status', 'pending');
@@ -123,11 +126,20 @@ export default function VolunteerDashboard({ profile }: VolunteerDashboardProps)
 
       if (error) throw error;
 
+      // Get organization names separately
+      const postingIds = data?.map(app => app.ngo_postings.ngo_user_id) || [];
+      const { data: orgData } = await supabase
+        .from('user_profiles')
+        .select('user_id, name')
+        .in('user_id', postingIds);
+
+      const orgMap = new Map(orgData?.map(org => [org.user_id, org.name]) || []);
+
       const formattedApplications = data?.map(app => ({
         id: app.id,
         posting: {
           title: app.ngo_postings.title,
-          organization_name: app.ngo_postings.user_profiles.name,
+          organization_name: orgMap.get(app.ngo_postings.ngo_user_id) || 'Unknown Organization',
           location: app.ngo_postings.location,
         },
         status: app.status,

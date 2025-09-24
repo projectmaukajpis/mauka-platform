@@ -34,38 +34,29 @@ export default function NearbyNGOsMap({ userLocation }: NearbyNGOsMapProps) {
 
     setLoading(true);
     try {
-      // This would call your backend API
-      const response = await fetch(`/api/match/nearby-ngos?lat=${userLocation.lat}&lng=${userLocation.lng}&radiusKm=${radiusKm}`);
-      const data = await response.json();
+      // Use the matchAPI instead of direct fetch
+      const nearbyNGOs = await matchAPI.findNearbyNGOs(
+        userLocation.lat,
+        userLocation.lng,
+        radiusKm
+      );
       
-      if (data.success) {
-        setNearbyNGOs(data.results);
-      }
+      // Convert to expected format
+      const formattedNGOs = nearbyNGOs.map(ngo => ({
+        id: ngo.id,
+        title: ngo.title,
+        organization_name: ngo.organization_name,
+        location: ngo.location,
+        coordinates: ngo.coordinates,
+        distanceKm: ngo.distanceKm,
+        description: ngo.description,
+        skills_required: ngo.skills_required
+      }));
+      
+      setNearbyNGOs(formattedNGOs);
     } catch (error) {
       console.error('Error fetching nearby NGOs:', error);
-      // For now, show sample data
-      setNearbyNGOs([
-        {
-          id: '1',
-          title: 'Teaching Assistant',
-          organization_name: 'Teach for India',
-          location: 'Andheri, Mumbai',
-          coordinates: { lat: 19.1136, lng: 72.8697 },
-          distanceKm: 5.2,
-          description: 'Help teach mathematics to underprivileged children',
-          skills_required: ['Teaching', 'Mathematics']
-        },
-        {
-          id: '2',
-          title: 'Health Camp Volunteer',
-          organization_name: 'Akshaya Patra',
-          location: 'Bandra, Mumbai',
-          coordinates: { lat: 19.0596, lng: 72.8295 },
-          distanceKm: 8.7,
-          description: 'Assist in organizing health camps for children',
-          skills_required: ['Healthcare', 'Event Management']
-        }
-      ]);
+      setNearbyNGOs([]);
     } finally {
       setLoading(false);
     }
