@@ -23,8 +23,11 @@ export default function LoginPage() {
     try {
       const { error } = await signIn(email, password);
       if (error) {
-        if (error.message.includes('Email not confirmed')) {
-          setError('Please check your email and click the confirmation link, or contact support if you need help.');
+        // Handle specific error cases
+        if (error.message.includes('Email not confirmed') || error.message.includes('email_not_confirmed')) {
+          setError('Account found but not activated. Please contact support for assistance.');
+        } else if (error.message.includes('Invalid login credentials')) {
+          setError('Invalid email or password. Please check your credentials and try again.');
         } else {
           setError(error.message);
         }

@@ -40,8 +40,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       password,
       options: {
         emailRedirectTo: undefined, // Disable email confirmation
-      },
-      options: {
         data: userData
       }
     });
