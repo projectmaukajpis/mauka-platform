@@ -23,7 +23,11 @@ export default function LoginPage() {
     try {
       const { error } = await signIn(email, password);
       if (error) {
-        setError(error.message);
+        if (error.message.includes('Email not confirmed')) {
+          setError('Please check your email and click the confirmation link, or contact support if you need help.');
+        } else {
+          setError(error.message);
+        }
       } else {
         navigate('/');
       }
